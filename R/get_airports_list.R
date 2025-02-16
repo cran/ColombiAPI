@@ -1,5 +1,5 @@
 # ColombiAPI - Access Colombia's Public Data via API-Colombia
-# Version 0.1.0
+# Version 0.1.1
 # Copyright (C) 2025 Renzo Caceres Rossi
 #
 # This program is free software: you can redistribute it and/or modify
@@ -92,7 +92,15 @@ get_airports_list <- function() {
   info_airports_json <- jsonlite::fromJSON(info_airports_char, flatten = TRUE)
 
   airports_json_selected <- info_airports_json %>%
-    dplyr::select(id, name, iataCode, oaciCode, type, longitude, latitude) %>%
+    dplyr::select(
+      id,
+      name,
+      iataCode,
+      oaciCode,
+      type,
+      longitude = latitude,
+      latitude = longitude
+    ) %>%
     dplyr::arrange(name)
 
   return(airports_json_selected)

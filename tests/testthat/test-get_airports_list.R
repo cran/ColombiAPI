@@ -1,5 +1,5 @@
 # ColombiAPI - Access Colombia's Public Data via API Colombia
-# Version 0.1.0
+# Version 0.1.1
 # Copyright (C) 2025 Renzo Caceres Rossi
 #
 # This program is free software: you can redistribute it and/or modify
@@ -30,8 +30,8 @@ test_that("Función get_airports_list devuelve datos esperados", {
   expect_equal(data$iataCode[1], "VUP")
   expect_equal(data$oaciCode[1], "SKVP")
   expect_equal(data$type[1], "Nacional")
-  expect_equal(data$longitude[1], 10.4339995)
-  expect_equal(round(data$latitude[1], 5), -73.25229)
+  expect_equal(round(data$longitude[1], 5), -73.25229)  # Corregido
+  expect_equal(data$latitude[1], 10.4339995)  # Corregido
 })
 
 test_that("Función get_airports_list devuelve un data frame", {
