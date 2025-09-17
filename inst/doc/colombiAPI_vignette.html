@@ -12,7 +12,7 @@
 
 
 
-<title>ColombiAPI: Exploring Colombia’s Public Data with API-Colombia</title>
+<title>ColombiAPI: Access Colombian Data via APIs and Curated Datasets</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -48,8 +48,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +61,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -336,8 +337,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">ColombiAPI: Exploring Colombia’s Public
-Data with API-Colombia</h1>
+<h1 class="title toc-ignore">ColombiAPI: Access Colombian Data via APIs
+and Curated Datasets</h1>
 
 
 
@@ -350,84 +351,160 @@ Data with API-Colombia</h1>
 <span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt;     filter, lag</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span></span>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>The <code>ColombiAPI</code> package provides a seamless interface to
-access diverse public data about <code>Colombia</code> through the
-<code>API-Colombia</code>, a RESTful API. The package enables users to
-explore various aspects of <code>Colombia</code>, including general
-information, geography, and cultural insights. It includes five
-API-related functions to retrieve data on topics such as
-<code>Colombia</code>’s general information, airports, departments,
-regions, and presidents.</p>
-<p>Additionally, <code>ColombiAPI</code> offers a built-in function to
-view the datasets available within the package. The package also
-includes curated datasets covering Bogota air stations, business and
-holiday dates, public schools, Colombian coffee exports, cannabis
-licenses, Medellin rainfall, and malls in Bogota, making it a
-comprehensive tool for exploring <code>Colombia</code>’s data.</p>
-<div id="functions-for-api-colombia" class="section level2">
-<h2>Functions for API-Colombia</h2>
-<p>The <code>ColombiAPI</code> package provides five primary functions
-to retrieve data from the <code>API-Colombia</code>, we’ll show you how
-two of them work in this section:</p>
+<p>The <code>ColombiAPI</code> package provides a unified interface to
+access open data from the <strong>API-Colombia</strong>, <strong>World
+Bank API</strong>, <strong>Nager.Date API</strong>, and the <strong>REST
+Countries API</strong>, with a focus on <strong>Colombia</strong>. It
+allows users to retrieve up-to-date or historical information on topics
+such as geographic locations, cultural attractions, economic indicators,
+demographic data, national holidays, and key country-level details.</p>
+<p>In addition to API-access functions, the package includes a
+collection of curated datasets related to <strong>Colombia</strong>.
+These datasets cover a wide range of topics including air quality
+monitoring, education (public schools), business and holiday calendars,
+agricultural exports (coffee), regulatory information (cannabis
+licenses), climate data (Medellin rainfall), and urban development
+(Bogota shopping malls).</p>
+<p><code>ColombiAPI</code> is designed to support users working with
+data related to <strong>Colombia</strong> by integrating international
+RESTful APIs with Colombian-specific APIs and structured, reliable
+datasets from public, academic, and government sources into a single,
+easy-to-use R package.</p>
+<div id="colombiapi-functions" class="section level2">
+<h2>ColombiAPI Functions</h2>
+<p>The <code>ColombiAPI</code> package provides several core functions
+to access real-time or historical information about
+<strong>Colombia</strong> from public APIs such as
+<strong>API-Colombia</strong>, <strong>World Bank API</strong>,
+<strong>Nager.Date</strong>, and the <strong>REST Countries
+API</strong>.</p>
+<p>Below is a list of the main functions included in the package:</p>
 <ul>
-<li><code>get_Colombia_info()</code> Retrieves general information about
-<code>Colombia</code>, including its capital, surface area, population,
-and languages.</li>
+<li><p><code>get_colombia_airports()</code>: Get Colombia’s Airports
+from API Colombia.</p></li>
+<li><p><code>get_colombia_attractions()</code>: Get All Touristic
+Attractions of Colombia from API Colombia.</p></li>
+<li><p><code>get_colombia_child_mortality()</code>: Get Colombia’s
+Under-5 Mortality Rate from World Bank.</p></li>
+<li><p><code>get_colombia_cities()</code>: Get All Cities of Colombia
+from API Colombia.</p></li>
+<li><p><code>get_colombia_cpi()</code>: Get Colombia’s Consumer Price
+Index (2010 = 100) from World Bank.</p></li>
+<li><p><code>get_colombia_departments()</code>: Get Colombia’s
+Departments from API Colombia.</p></li>
+<li><p><code>get_colombia_energy_use()</code>: Get Colombia’s Energy Use
+(kg of oil equivalent per capita) from World Bank.</p></li>
+<li><p><code>get_colombia_gdp function()</code>: Get Colombia’s GDP
+(current US$) from World Bank.</p></li>
+<li><p><code>get_colombia_holidays()</code>: Get official public
+holidays in Colombia for a given year, e.g.,
+<code>get_colombia_holidays(2025)</code>.</p></li>
+<li><p><code>get_colombia_hospital_beds()</code>: Get Colombia’s
+Hospital Beds (per 1,000 people) from World Bank.</p></li>
+<li><p><code>get_colombia_invasive_species()</code>: Get Invasive
+Species of Colombia from API Colombia.</p></li>
+<li><p><code>get_colombia_life_expectancy()</code>: Get Colombia’s Life
+Expectancy at Birth (Total, Years) from World Bank.</p></li>
+<li><p><code>get_colombia_literacy_rate()</code>: Get Colombia’s Adult
+Literacy Rate from World Bank.</p></li>
+<li><p><code>get_colombia_native_communities()</code>: Get Native
+Communities of Colombia from API Colombia.</p></li>
+<li><p><code>get_colombia_natural_areas()</code>: Get Natural Areas of
+Colombia from API Colombia.</p></li>
+<li><p><code>get_colombia_population()</code>: Get Colombia’s Total
+Population from World Bank.</p></li>
+<li><p><code>get_colombia_presidents()</code>: Get Colombia’s Presidents
+from API Colombia.</p></li>
+<li><p><code>get_colombia_radios()</code>: Get Radios of Colombia from
+API Colombia.</p></li>
+<li><p><code>get_colombia_regions()</code>: Get Colombia’s Regions from
+API Colombia.</p></li>
+<li><p><code>get_colombia_typical_dishes()</code>: Get Typical Dishes of
+Colombia from API Colombia.</p></li>
+<li><p><code>get_colombia_unemployment()</code>: Get Colombia’s
+Unemployment Rate (Total) from World Bank.</p></li>
+<li><p><code>get_country_info_co()</code>: Get Country Information for
+Colombia from restcountries.</p></li>
+<li><p><code>view_datasets_ColombiAPI()</code>: View available curated
+datasets included in ColombiAPI.</p></li>
 </ul>
+<p>These functions allow users to access high-quality and structured
+information on <strong>Colombia</strong>, which can be combined with
+tools like <strong>dplyr</strong> and <strong>ggplot2</strong> to
+support a wide range of data analysis, visualization, and research
+tasks. In the following sections, you’ll find examples on how to work
+with <code>ColombiAPI</code> in practical scenarios.</p>
+<div id="colombias-gdp-current-us-from-world-bank-2022---2017" class="section level3">
+<h3>Colombia’s GDP (Current US$) from World Bank 2022 - 2017</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">get_Colombia_info</span>()</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#&gt;       name surface population timeZone       currency currencySymbol   region</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt; 1 Colombia 1141748   52235050    UTC-5 Colombian Peso              $ Americas</span></span></code></pre></div>
-<ul>
-<li><code>get_regions_list()</code> Retrieves information about
-<code>Colombia</code>’s regions, showcasing their unique
-characteristics.</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">get_regions_list</span>()</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#&gt;   id      name</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; 1  4  Amazonía</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; 2  5    Andina</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; 3  1    Caribe</span></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; 4  6   Insular</span></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; 5  3 Orinoquía</span></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; 6  2  Pacífico</span></span></code></pre></div>
-<ul>
-<li><p><code>get_departments_list()</code>: Lists all the departments of
-<code>Colombia</code>, including their geographical
-information.</p></li>
-<li><p><code>get_presidents_list()</code>: Provides a list of all
-presidents in <code>Colombia</code>’s history.</p></li>
-<li><p><code>get_airports_list()</code>: Get the List of Airports in
-<code>Colombia</code>.</p></li>
-</ul>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>colombia_gdp <span class="ot">&lt;-</span> <span class="fu">head</span>(<span class="fu">get_colombia_gdp</span>())</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="fu">print</span>(colombia_gdp)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co">#&gt;   indicator         country   year         value value_label    </span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;    &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt;          </span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co">#&gt; 1 GDP (current US$) Colombia  2022 345632492851. 345,632,492,851</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt; 2 GDP (current US$) Colombia  2021 318524633225. 318,524,633,225</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt; 3 GDP (current US$) Colombia  2020 270348342541. 270,348,342,541</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt; 4 GDP (current US$) Colombia  2019 323031701193. 323,031,701,193</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; 5 GDP (current US$) Colombia  2018 334198218098. 334,198,218,098</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; 6 GDP (current US$) Colombia  2017 311866875157. 311,866,875,157</span></span></code></pre></div>
 </div>
-<div id="datasets-included-in-colombiapi" class="section level2">
-<h2>Datasets Included in ColombiAPI</h2>
-<p>In addition to API functions, <code>ColombiAPI</code> includes
-several preloaded datasets that provide valuable insights into various
-aspects of <code>Colombia</code>:</p>
-<ul>
-<li><p><code>Bogota_airstations_df</code>: A data frame containing
-coordinates of air quality monitoring stations in Bogota.</p></li>
-<li><p><code>Bogota_business_Date</code>: A Date object listing official
-business dates in Bogota.</p></li>
-<li><p><code>Bogota_holidays_Date</code>: A Date object listing official
-holidays in Bogota.</p></li>
-<li><p><code>Bogota_malls_tbl_df</code>: A tibble with detailed
-information about malls in Bogota.</p></li>
-<li><p><code>Cannabis_Licenses_tbl_df</code>: A tibble containing data
-on cannabis licenses issued in Colombia.</p></li>
-<li><p><code>Colombia_coffee_tbl_df</code>: A tibble with details of
-Colombian coffee export and import for the year 2016.</p></li>
-<li><p><code>Medellin_rain_tbl_df</code>: A tibble providing rainfall
-data for Medellin.</p></li>
-<li><p><code>Tulua_Public_Schools_tbl_df</code>: A tibble with
-information on public schools in Tulua.</p></li>
-</ul>
+<div id="colombias-life-expectancy-at-birth-from-world-bank-2022---2017" class="section level3">
+<h3>Colombia’s Life Expectancy at Birth from World Bank 2022 - 2017</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>colombia_life_expectancy <span class="ot">&lt;-</span> <span class="fu">head</span>(<span class="fu">get_colombia_life_expectancy</span>())</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">print</span>(colombia_life_expectancy)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 × 4</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt;   indicator                               country   year value</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;                                   &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; 1 Life expectancy at birth, total (years) Colombia  2022  76.5</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; 2 Life expectancy at birth, total (years) Colombia  2021  72.7</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; 3 Life expectancy at birth, total (years) Colombia  2020  74.8</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; 4 Life expectancy at birth, total (years) Colombia  2019  76.8</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt; 5 Life expectancy at birth, total (years) Colombia  2018  76.6</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; 6 Life expectancy at birth, total (years) Colombia  2017  76.4</span></span></code></pre></div>
+</div>
+<div id="colombias-total-population-from-world-bank-2022---2017" class="section level3">
+<h3>Colombia’s Total Population from World Bank 2022 - 2017</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>colombia_population <span class="ot">&lt;-</span> <span class="fu">head</span>(<span class="fu">get_colombia_population</span>())</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="fu">print</span>(colombia_population)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt;   indicator         country   year    value value_label</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;    &lt;int&gt;    &lt;int&gt; &lt;chr&gt;      </span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; 1 Population, total Colombia  2022 51737944 51,737,944 </span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; 2 Population, total Colombia  2021 51188173 51,188,173 </span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; 3 Population, total Colombia  2020 50629997 50,629,997 </span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; 4 Population, total Colombia  2019 49907985 49,907,985 </span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; 5 Population, total Colombia  2018 49024465 49,024,465 </span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; 6 Population, total Colombia  2017 48131078 48,131,078</span></span></code></pre></div>
+</div>
+</div>
+<div id="monthly-average-rainfall-in-medellin" class="section level2">
+<h2>Monthly Average Rainfall in Medellin</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>Medellin_rain_tbl_df <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rainfall =</span> <span class="fu">mean</span>(rainfall, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_rainfall)) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkred&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Climatological Monthly Average Rainfall in Medellin&quot;</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Each point represents the long-term mean rainfall for that month, averaged across all years&quot;</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Mean Rainfall (mm)&quot;</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
 <div id="dataset-suffixes" class="section level3">
 <h3>Dataset Suffixes</h3>
 <p>Each dataset in <code>ColombiAPI</code> is labeled with a
@@ -439,31 +516,59 @@ with better formatting and functionality.</p></li>
 <li><p><code>_Date</code>: An object of type Date.</p></li>
 </ul>
 </div>
+<div id="datasets-included-in-colombiapi" class="section level3">
+<h3>Datasets Included in ColombiAPI</h3>
+<p>In addition to API functions, <code>ColombiAPI</code> includes
+several preloaded datasets that provide valuable insights into various
+aspects of <code>Colombia</code>:</p>
+<ul>
+<li><p><code>Bogota_airstations_df</code>: A data frame containing
+coordinates of air quality monitoring stations in Bogota.</p></li>
+<li><p><code>Bogota_business_Date</code>: A Date object listing official
+business dates in Bogota.</p></li>
+<li><p><code>Colombia_coffee_tbl_df</code>: A tibble with details of
+Colombian coffee export and import for the year 2016.</p></li>
+</ul>
+</div>
 </div>
 <div id="viewing-all-available-datasets" class="section level2">
 <h2>Viewing All Available Datasets</h2>
 <p>The <code>ColombiAPI</code> package includes a built-in function,
-<code>view_datasets()</code>, which allows users to view a comprehensive
-list of all datasets available in the package directly from the
-console:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">view_datasets</span>()</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; Datasets available in the &#39;ColombiAPI&#39; package:</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Bogota_airstations_df&quot;       &quot;Bogota_business_Date&quot;       </span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; [3] &quot;Bogota_holidays_Date&quot;        &quot;Bogota_malls_tbl_df&quot;        </span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; [5] &quot;Cannabis_Licenses_tbl_df&quot;    &quot;Colombia_coffee_tbl_df&quot;     </span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; [7] &quot;Medellin_rain_tbl_df&quot;        &quot;Tulua_Public_Schools_tbl_df&quot;</span></span></code></pre></div>
+<code>view_datasets_ColombiAPI()</code>, which allows users to view a
+comprehensive list of all datasets available in the package directly
+from the console:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">view_datasets_ColombiAPI</span>()</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#&gt; Datasets available in the &#39;ColombiAPI&#39; package:</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Bogota_airstations_df&quot;       &quot;Bogota_business_Date&quot;       </span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt; [3] &quot;Bogota_holidays_Date&quot;        &quot;Bogota_malls_tbl_df&quot;        </span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt; [5] &quot;Cannabis_Licenses_tbl_df&quot;    &quot;Colombia_coffee_tbl_df&quot;     </span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; [7] &quot;Medellin_rain_tbl_df&quot;        &quot;Tulua_Public_Schools_tbl_df&quot;</span></span></code></pre></div>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>The <code>ColombiAPI</code> package offers a powerful set of tools
-for accessing and analyzing public data about Colombia. From exploring
-general information about the country to diving into specific datasets
-on topics like air quality, public schools, or coffee exports,
-<code>ColombiAPI</code> enables users to engage with Colombia’s rich
-data landscape easily. For more detailed examples and use cases, refer
-to the full package documentation or explore the datasets using the
-built-in functions.</p>
+<p>The <code>ColombiAPI</code> package provides a unified and powerful
+interface for accessing both real-time data through public APIs and a
+collection of curated datasets about <strong>Colombia</strong>. By
+integrating multiple data sources — including <code>API-Colombia</code>
+for geography, culture, tourism, and government information, the
+<code>World Bank API</code> for economic and demographic indicators,
+<code>Nager.Date</code> for official holidays, and the
+<code>REST Countries API</code> for general country details — the
+package allows users to explore <strong>Colombia</strong> from multiple
+perspectives in a structured and consistent way.</p>
+<p>In addition to API-driven data, <code>ColombiAPI</code> offers
+preloaded open datasets related to Colombia, such as Bogotá air
+stations, public schools, business and holiday dates, coffee exports,
+cannabis licenses, Medellin rainfall, and malls in Bogota. This dual
+approach of combining live API data with curated datasets empowers users
+to analyze Colombia’s social, economic, environmental, and cultural
+landscape in greater depth.</p>
+<p>Designed to support reproducible research, education, policy
+analysis, and data journalism, <code>ColombiAPI</code> makes it possible
+to seamlessly integrate Colombian data into the R ecosystem, ensuring
+accessibility, reliability, and clarity for a wide range of
+applications.</p>
 <div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
 
 </div>
